@@ -1,35 +1,41 @@
 
-set(CPPUNIT_FOUND   "NO")
+set(CPPUNIT_FOUND   FALSE)
+
+Include (FindPackageHandleStandardArgs)
 
 If ( NOT ( "${CPPUNIT_DIR}" STREQUAL "no" ) )
-find_path(
-    CPPUNIT_INCLUDE_DIR
-    NAMES   cppunit/extensions/HelperMacros.h
-    PATHS
-        ${CPPUNIT_DIR}/include
-        /usr/include
-        /usr/local/include
-)
+    find_path(
+        CPPUNIT_INCLUDE_DIR
+        NAMES   cppunit/extensions/HelperMacros.h
+        PATHS
+            ${CPPUNIT_DIR}/include
+            /usr/include
+            /usr/local/include
+    )
 
-find_library(
-    CPPUNIT_LIBRARY
-    NAMES   cppunit
-    PATHS
-        ${CPPUNIT_DIR}/lib
-        /usr/lib
-        /usr/local/lib
-)
+    find_library(
+        CPPUNIT_LIBRARY
+        NAMES   cppunit
+        PATHS
+            ${CPPUNIT_DIR}/lib
+            /usr/lib
+            /usr/local/lib
+        )
+    find_package_handle_standard_args(
+        CPPUNIT     DEFAULT_MSG
+        CPPUNIT_LIBRARY
+        CPPUNIT_INCLUDE_DIR
+    )
 EndIf ()
 
 If ( CPPUNIT_INCLUDE_DIR )
     If ( CPPUNIT_LIBRARY )
-        set(CPPUNIT_FOUND   "YES")
-        set(CPPUNIT_LIBRARIES  ${CPPUNIT_LIBRARY} ${CMAKE_DL_LIBS})
+            message(STATUS  "CPPUNIT is enabled.")
     Else ()
-        message(STATUS  "Could not find cppunit library.")
+        message(WARNING "Could not find cppunit library.")
     EndIf ()
 Else ()
-    message(STATUS  "Could not find cppunit includes.")
+    message(WARNING "Could not find cppunit includes.")
 EndIf ()
 
 message(STATUS  "CPPUNIT_FOUND       = ${CPPUNIT_FOUND}")
