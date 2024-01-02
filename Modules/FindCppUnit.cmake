@@ -36,7 +36,7 @@ message(STATUS  "CPPUNIT_LIBRARIES   = ${CPPUNIT_LIBRARIES}")
 
 If ( NOT TARGET CPPUNIT::CPPUNIT )
     If ( CPPUNIT_FOUND )
-        add_library(CPPUNIT::CPPUNIT    UNKNOWN IMPORTED)
+        add_library(CPPUNIT::CPPUNIT    UNKNOWN     IMPORTED)
         set_target_properties(CPPUNIT::CPPUNIT
             PROPERTIES
             IMPORTED_LINK_INTERFACE_LANGUAGES   "CXX"
@@ -44,11 +44,6 @@ If ( NOT TARGET CPPUNIT::CPPUNIT )
             INTERFACE_INCLUDE_DIRECTORIES       "${CPPUNIT_INCLUDE_DIR}"
             COMPILE_DEFINITIONS                 "HAVE_CPPUNIT=1"
         )
-    Else ()
-        add_library(CPPUNIT::CPPUNIT    INTERFACE)
-        set_target_properties(CPPUNIT::CPPUNIT
-            PROPERTIES
-            COMPILE_DEFINITIONS                 "HAVE_CPPUNIT=0"
-        )
+        message(STATUS  "Define target CPPUNIT::CPPUNIT")
     EndIf ()
 EndIf ()
