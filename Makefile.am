@@ -12,5 +12,5 @@ dist_noinst_DATA    =  \
     CheckConstExpr.cmake        \
     CheckNullPtr.cmake          \
     CheckOverride.cmake         \
-    EnableCxx11.cmake           \
+    EnableCxx11.cmake
 
