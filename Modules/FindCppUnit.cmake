@@ -34,17 +34,21 @@ message(STATUS  "CPPUNIT_FOUND       = ${CPPUNIT_FOUND}")
 message(STATUS  "CPPUNIT_INCLUDE_DIR = ${CPPUNIT_INCLUDE_DIR}")
 message(STATUS  "CPPUNIT_LIBRARIES   = ${CPPUNIT_LIBRARIES}")
 
-If ( CPPUNIT_FOUND AND NOT TARGET CPPUNIT::CPPUNIT )
-    add_library(CPPUNIT::CPPUNIT    UNKNOWN IMPORTED)
-    set_target_properties(CPPUNIT::CPPUNIT  PROPERTIES
-        IMPORTED_LINK_INTERFACE_LANGUAGES   "CXX"
-        IMPORTED_LOCATION                   "${CPPUNIT_LIBRARY}"
-        INTERFACE_INCLUDE_DIRECTORIES       "${CPPUNIT_INCLUDE_DIR}"
-        COMPILE_DEFINITIONS                 "HAVE_CPPUNIT=1"
-    )
-Else ()
-    add_library(CPPUNIT::CPPUNIT    INTERFACE)
-    set_target_properties(CPPUNIT::CPPUNIT  PROPERTIES
-        COMPILE_DEFINITIONS                 "HAVE_CPPUNIT=0"
-    )
-EndIf()
+If ( NOT TARGET CPPUNIT::CPPUNIT )
+    If ( CPPUNIT_FOUND )
+        add_library(CPPUNIT::CPPUNIT    UNKNOWN IMPORTED)
+        set_target_properties(CPPUNIT::CPPUNIT
+            PROPERTIES
+            IMPORTED_LINK_INTERFACE_LANGUAGES   "CXX"
+            IMPORTED_LOCATION                   "${CPPUNIT_LIBRARY}"
+            INTERFACE_INCLUDE_DIRECTORIES       "${CPPUNIT_INCLUDE_DIR}"
+            COMPILE_DEFINITIONS                 "HAVE_CPPUNIT=1"
+        )
+    Else ()
+        add_library(CPPUNIT::CPPUNIT    INTERFACE)
+        set_target_properties(CPPUNIT::CPPUNIT
+            PROPERTIES
+            COMPILE_DEFINITIONS                 "HAVE_CPPUNIT=0"
+        )
+    EndIf ()
+EndIf ()
