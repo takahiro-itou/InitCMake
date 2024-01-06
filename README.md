@@ -42,3 +42,12 @@ set(CMAKE_MODULE_PATH
 
 Find_Package (CppUnit)
 ```
+
+- これでターゲット CPPUNIT::CPPUNIT が定義される。
+- 以下のようにこのターゲットを使うと、
+  必要なオプションがコンパイラやリンカに渡される。
+
+```
+set(TEST_DRIVER_MODULE  "TestDriver")
+target_link_libraries(${TEST_DRIVER_MODULE}     CPPUNIT::CPPUNIT)
+```
