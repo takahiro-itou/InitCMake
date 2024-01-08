@@ -34,6 +34,18 @@ Include (${COMMON_CMAKE_DIR}/CheckOverride.cmake)
 | CheckNullPtr.cmake   | CONFIG_CHECK_CXX_NULLPTR_ENABLED   | nullptr    |
 | CheckOverride.cmake  | CONFIG_CHECK_CXX_OVERRIDE_ENABLED  | override   |
 
+- EnableCxx11.cmake の判定結果
+
+| 検査順序 |         フラグ名         |   検査対象   |
+|---------:|:-------------------------|:-------------|
+|       1  | COMPILER_ACCEPTS_GNUXX14 | --std=gnu+14 |
+|       2  | COMPILER_ACCEPTS_GNUXX11 | --std=gnu+11 |
+|       3  | COMPILER_ACCEPTS_CXX11   | --std=c++11  |
+|       4  | COMPILER_ACCEPTS_CXX0X   | --std=c++0x  |
+
+これを上から順に検査して、最初に受け入れられたオプションが
+変数 CXXFLAGS_ENABLE_STDCXX に設定され、
+さらに変数 CMAKE_CXX_FLAGS  の末尾に追記される。
 
 ###   外部パッケージの追加
 
