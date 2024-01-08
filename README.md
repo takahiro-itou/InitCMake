@@ -45,7 +45,7 @@ Include (${COMMON_CMAKE_DIR}/CheckOverride.cmake)
 
 これを上から順に検査して、最初に受け入れられたオプションが
 変数 CXXFLAGS_ENABLE_STDCXX に設定され、
-さらに変数 CXXFLAGS の末尾に追記される。
+さらに変数 CMAKE_CXX_FLAGS  の末尾に追記される。
 
 ###   外部パッケージの追加
 
