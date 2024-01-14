@@ -1,7 +1,7 @@
 
 Include (CheckCXXSourceCompiles)
 
-check_cxx_source_compiles (
+check_cxx_source_compiles(
    "constexpr  int  a = 0;
     int main () {
         return ( a );
