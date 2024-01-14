@@ -36,7 +36,7 @@ set(MODULE_TARGET_NAME  "${LIBRARIES_TARGET_PREFIX}${MODULE_TITLE}")
 
 ##  ソースファイルの有無を確認する。
 
-If ( NOT("${LIBRARY_SOURCE_FILES}" STREQUAL "") )
+If ( NOT ( "${LIBRARY_SOURCE_FILES}" STREQUAL "" ) )
     ##  通常通りライブラリファイルを生成する。
     add_library(${PROJECT_NAME}-${MODULE_TARGET_NAME}
             ${LIBRARY_SOURCE_FILES})
@@ -60,7 +60,7 @@ If ( NOT("${LIBRARY_SOURCE_FILES}" STREQUAL "") )
             PROPERTY        OUTPUT_NAME_DEBUG
             ${LIBRARY_OUTPUT_NAME}${OUTPUT_DEBUG_SUFFIX}
     )
-    set_property (TARGET    ${PROJECT_NAME}-${MODULE_TARGET_NAME}
+    set_property(TARGET     ${PROJECT_NAME}-${MODULE_TARGET_NAME}
             PROPERTY        OUTPUT_NAME_RELEASE
             ${LIBRARY_OUTPUT_NAME}${OUTPUT_RELEASE_SUFFIX}
     )
