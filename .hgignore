@@ -2,7 +2,7 @@
 syntax: glob
 
 syntax: regexp
-^.git
+^\.git
 
 Makefile\.in$
 
