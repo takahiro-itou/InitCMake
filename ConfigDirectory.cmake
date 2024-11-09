@@ -21,5 +21,5 @@ set(INCLUDE_BINARY_DIR      "${INCTOP_BINARY_DIR}/${INCPKG_DIR_NAME}")
 ##    インクルードパスの設定。
 ##
 
-include_directories("${PROJECT_SOURCE_DIR}/Include")
-include_directories("${PROJECT_BINARY_DIR}/Include")
+include_directories("${PROJECT_SOURCE_DIR}/${INCTOP_DIR_NAME}")
+include_directories("${PROJECT_BINARY_DIR}/${INCTOP_DIR_NAME}")
