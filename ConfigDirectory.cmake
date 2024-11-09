@@ -14,3 +14,12 @@ set(LIBTOP_BINARY_DIR       "${PROJECT_BINARY_DIR}/${LIBTOP_DIR_NAME}")
 
 set(INCLUDE_SOURCE_DIR      "${INCTOP_SOURCE_DIR}/${INCPKG_DIR_NAME}")
 set(INCLUDE_BINARY_DIR      "${INCTOP_BINARY_DIR}/${INCPKG_DIR_NAME}")
+
+
+##----------------------------------------------------------------
+##
+##    インクルードパスの設定。
+##
+
+include_directories("${PROJECT_SOURCE_DIR}/Include")
+include_directories("${PROJECT_BINARY_DIR}/Include")
