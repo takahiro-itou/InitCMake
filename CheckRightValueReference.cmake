@@ -5,7 +5,7 @@ Include (CheckCXXSourceCompiles)
 ##  Check Compiler Accepts Right Value Reference.
 ##
 
-Check_CXX_Source_Compiles (
+check_cxx_source_compiles(
    "#include  <string>
 
     int  func(std::string  && x) {
@@ -20,28 +20,27 @@ Check_CXX_Source_Compiles (
     CMAKE_CHECK_CXX_RVALUEREF_ENABLED
 )
 If ( CMAKE_CHECK_CXX_RVALUEREF_ENABLED )
-    Set (CONFIG_CHECK_CXX_RVALUEREF_ENABLED  1)
+    set(CONFIG_CHECK_CXX_RVALUEREF_ENABLED  1)
 Else  ()
-    Set (CONFIG_CHECK_CXX_RVALUEREF_ENABLED  0)
+    set(CONFIG_CHECK_CXX_RVALUEREF_ENABLED  0)
 EndIf ()
 
 ##
 ##  Check Compiler Warns Pessimizing Move.
 ##
 
-Set (SAVE_CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS}")
-Set (CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS}  -Werror  -Wall")
-Check_CXX_Source_Compiles (
+set(SAVE_CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS}")
+set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS}  -Werror  -Wall")
+check_cxx_source_compiles(
    "constexpr  int  a = 0;
     int main () {
         return ( a );
     }"
     CMAKE_CHECK_CXX_PESSIMIZING_MOVE_ENABLED
 )
-Set (CMAKE_CXX_FLAGS  "${SAVE_CMAKE_CXX_FLAGS}")
+set(CMAKE_CXX_FLAGS  "${SAVE_CMAKE_CXX_FLAGS}")
 If ( CMAKE_CHECK_CXX_PESSIMIZING_MOVE_ENABLED )
-    Set (CONFIG_CHECK_CXX_PESSIMIZING_MOVE_ERROR  0)
+    set(CONFIG_CHECK_CXX_PESSIMIZING_MOVE_ERROR     0)
 Else  ()
-    Set (CONFIG_CHECK_CXX_PESSIMIZING_MOVE_ERROR  1)
+    set(CONFIG_CHECK_CXX_PESSIMIZING_MOVE_ERROR     1)
 EndIf ()
-
