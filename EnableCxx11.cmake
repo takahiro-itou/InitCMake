@@ -2,7 +2,7 @@
 Include (CheckCXXCompilerFlag)
 
 check_cxx_compiler_flag("-std=gnu++14"  COMPILER_ACCEPTS_GNUXX14)
-check_cxx_Compiler_flag("-std=gnu++11"  COMPILER_ACCEPTS_GNUXX11)
+check_cxx_compiler_flag("-std=gnu++11"  COMPILER_ACCEPTS_GNUXX11)
 check_cxx_compiler_flag("-std=c++11"    COMPILER_ACCEPTS_CXX11)
 check_cxx_compiler_flag("-std=c++0x"    COMPILER_ACCEPTS_CXX0X)
 
@@ -25,4 +25,3 @@ EndIf ()
 
 set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS}  ${CXXFLAGS_ENABLE_STDCXX}")
 message(STATUS  "CMAKE_CXX_FLAGS = ${CMAKE_CXX_FLAGS}")
-
