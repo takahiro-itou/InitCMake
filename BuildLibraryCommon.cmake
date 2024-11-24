@@ -20,9 +20,9 @@
 ##  -   モジュール毎に設定する必要がある変数：
 ##    --  INCLIB_HEADER_FILES
 ##    --  LIBRARY_SOURCE_FILES
-##    --  MODULE_DIR_NAME
-##    --  MODULE_TITLE
-##    --  MODULE_OUTPUT_NAME
+##    --  module_dir_name
+##    --  module_title
+##    --  module_output_name
 ##
 
 ##----------------------------------------------------------------
@@ -32,7 +32,7 @@
 
 ##  ターゲットの名前。
 
-set(MODULE_TARGET_NAME  "${LIBRARIES_TARGET_PREFIX}${MODULE_TITLE}")
+set(MODULE_TARGET_NAME  "${LIBRARIES_TARGET_PREFIX}${module_title}")
 
 ##  ソースファイルの有無を確認する。
 
@@ -42,13 +42,13 @@ If ( NOT ( "${LIBRARY_SOURCE_FILES}" STREQUAL "" ) )
             ${LIBRARY_SOURCE_FILES})
 
     ##  出力するファイル名。
-    If ( "${MODULE_OUTPUT_NAME}" STREQUAL "" )
+    If ( "${module_output_name}" STREQUAL "" )
         set(LIBRARY_OUTPUT_NAME
                 ${LIBRARIES_NAME_PREFIX}${MODULE_TARGET_NAME}
         )
     Else  ()
         set(LIBRARY_OUTPUT_NAME
-                ${LIBRARIES_NAME_PREFIX}${MODULE_OUTPUT_NAME}
+                ${LIBRARIES_NAME_PREFIX}${module_output_name}
         )
     EndIf ()
 
@@ -102,15 +102,15 @@ set_property(TARGET     ${PROJECT_NAME}-${MODULE_TARGET_NAME}
 ##  ヘッダファイルをインストールする。
 
 install(FILES           ${INCLIB_HEADER_FILES}
-        DESTINATION     ${PACKAGE_INCLUDE_DIR}/${MODULE_DIR_NAME}
+        DESTINATION     ${PACKAGE_INCLUDE_DIR}/${module_dir_name}
 )
 
 ##  ライブラリファイルをインストールする。
 
 install(TARGETS     ${PROJECT_NAME}-${MODULE_TARGET_NAME}
-        EXPORT      ${PROJECT_NAME}-${MODULE_TITLE}-Export
-        ARCHIVE     DESTINATION  ${libtop_dir_name}/${MODULE_DIR_NAME}
-        LIBRARY     DESTINATION  ${libtop_dir_name}/${MODULE_DIR_NAME}
+        EXPORT      ${PROJECT_NAME}-${module_title}-Export
+        ARCHIVE     DESTINATION  ${libtop_dir_name}/${module_dir_name}
+        LIBRARY     DESTINATION  ${libtop_dir_name}/${module_dir_name}
 )
 
 ##----------------------------------------------------------------
@@ -120,9 +120,9 @@ install(TARGETS     ${PROJECT_NAME}-${MODULE_TARGET_NAME}
 
 ##  インストールツリー向けのエクスポート。
 
-install(EXPORT          ${PROJECT_NAME}-${MODULE_TITLE}-Export
-        FILE            ${PROJECT_NAME}-${MODULE_TITLE}-Export.cmake
-        DESTINATION     ${libtop_dir_name}/${MODULE_DIR_NAME}
+install(EXPORT          ${PROJECT_NAME}-${module_title}-Export
+        FILE            ${PROJECT_NAME}-${module_title}-Export.cmake
+        DESTINATION     ${libtop_dir_name}/${module_dir_name}
         EXPORT_LINK_INTERFACE_LIBRARIES
 )
 
@@ -130,5 +130,5 @@ install(EXPORT          ${PROJECT_NAME}-${MODULE_TITLE}-Export
 
 export(
     TARGETS     ${PROJECT_NAME}-${MODULE_TARGET_NAME}
-    FILE        ${PROJECT_NAME}-${MODULE_TITLE}-BuildTree-Export.cmake
+    FILE        ${PROJECT_NAME}-${module_title}-BuildTree-Export.cmake
 )
