@@ -8,11 +8,11 @@
 ##    インクルードする前に設定すべき変数：
 ##
 ##  -   プロジェクト全体で共通にする事が多い変数
-##    --  INCTOP_DIR_NAME
+##    --  inctop_dir_name
 ##    --  INCTOP_SOURCE_DIR
 ##    --  LIBRARIES_TARGET_PREFIX
 ##    --  LIBRARIES_NAME_PREFIX
-##    --  LIBTOP_DIR_NAME
+##    --  libtop_dir_name
 ##    --  OUTPUT_DEBUG_SUFFIX
 ##    --  OUTPUT_RELEASE_SUFFIX
 ##    --  PACKAGE_INCLUDE_DIR
@@ -90,7 +90,7 @@ EndIf ()
 set_property(TARGET     ${PROJECT_NAME}-${MODULE_TARGET_NAME}
         APPEND  PROPERTY   INTERFACE_INCLUDE_DIRECTORIES
         $<BUILD_INTERFACE:${INCTOP_SOURCE_DIR}>
-        $<INSTALL_INTERFACE:${INCTOP_DIR_NAME}>
+        $<INSTALL_INTERFACE:${inctop_dir_name}>
 )
 
 ##----------------------------------------------------------------
@@ -109,8 +109,8 @@ install(FILES           ${INCLIB_HEADER_FILES}
 
 install(TARGETS     ${PROJECT_NAME}-${MODULE_TARGET_NAME}
         EXPORT      ${PROJECT_NAME}-${MODULE_TITLE}-Export
-        ARCHIVE     DESTINATION  ${LIBTOP_DIR_NAME}/${MODULE_DIR_NAME}
-        LIBRARY     DESTINATION  ${LIBTOP_DIR_NAME}/${MODULE_DIR_NAME}
+        ARCHIVE     DESTINATION  ${libtop_dir_name}/${MODULE_DIR_NAME}
+        LIBRARY     DESTINATION  ${libtop_dir_name}/${MODULE_DIR_NAME}
 )
 
 ##----------------------------------------------------------------
@@ -122,7 +122,7 @@ install(TARGETS     ${PROJECT_NAME}-${MODULE_TARGET_NAME}
 
 install(EXPORT          ${PROJECT_NAME}-${MODULE_TITLE}-Export
         FILE            ${PROJECT_NAME}-${MODULE_TITLE}-Export.cmake
-        DESTINATION     ${LIBTOP_DIR_NAME}/${MODULE_DIR_NAME}
+        DESTINATION     ${libtop_dir_name}/${MODULE_DIR_NAME}
         EXPORT_LINK_INTERFACE_LIBRARIES
 )
 
