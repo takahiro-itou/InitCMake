@@ -17,5 +17,5 @@ EndIf()
 ##    インクルードディレクトリのパスを設定。
 ##
 
-set(inclib_source_dir   "${INCLUDE_SOURCE_DIR}/${MODULE_DIR_NAME}")
-set(inclib_binary_dir   "${INCLUDE_BINARY_DIR}/${MODULE_DIR_NAME}")
+set(inclib_source_dir   "${incpkg_source_dir}/${MODULE_DIR_NAME}")
+set(inclib_binary_dir   "${incpkg_binary_dir}/${MODULE_DIR_NAME}")
