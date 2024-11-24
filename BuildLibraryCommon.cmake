@@ -9,7 +9,7 @@
 ##
 ##  -   プロジェクト全体で共通にする事が多い変数
 ##    --  inctop_dir_name
-##    --  INCTOP_SOURCE_DIR
+##    --  inctop_source_dir
 ##    --  LIBRARIES_TARGET_PREFIX
 ##    --  LIBRARIES_NAME_PREFIX
 ##    --  libtop_dir_name
@@ -89,7 +89,7 @@ EndIf ()
 
 set_property(TARGET     ${PROJECT_NAME}-${MODULE_TARGET_NAME}
         APPEND  PROPERTY   INTERFACE_INCLUDE_DIRECTORIES
-        $<BUILD_INTERFACE:${INCTOP_SOURCE_DIR}>
+        $<BUILD_INTERFACE:${inctop_source_dir}>
         $<INSTALL_INTERFACE:${inctop_dir_name}>
 )
 
