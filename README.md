@@ -12,6 +12,14 @@ git submodule add https://gitlab.com/takahiro-itou/InitCMake.git [path_for_cmake
 
 ##  CMakeLists.txt  を編集
 
+```
+##
+##    共通の .cmake ファイルの置いてある場所。
+##
+
+set(common_cmake_dir        "${PROJECT_SOURCE_DIR}/[path_for_cmake]")
+```
+
 ###   コンパイラの持つ機能を検査
 
 ```
@@ -20,11 +28,11 @@ git submodule add https://gitlab.com/takahiro-itou/InitCMake.git [path_for_cmake
 ##    ビルド環境の検査。
 ##
 
-Include (${COMMON_CMAKE_DIR}/EnableCxx11.cmake)
+Include (${common_cmake_dir}/EnableCxx11.cmake)
 
-Include (${COMMON_CMAKE_DIR}/CheckConstExpr.cmake)
-Include (${COMMON_CMAKE_DIR}/CheckNullPtr.cmake)
-Include (${COMMON_CMAKE_DIR}/CheckOverride.cmake)
+Include (${common_cmake_dir}/CheckConstExpr.cmake)
+Include (${common_cmake_dir}/CheckNullPtr.cmake)
+Include (${common_cmake_dir}/CheckOverride.cmake)
 ```
 
 |      ファイル名      |          設定されるフラグ          |  検査対象  |
@@ -57,7 +65,7 @@ Include (${COMMON_CMAKE_DIR}/CheckOverride.cmake)
 ##
 
 set(CMAKE_MODULE_PATH
-    ${CMAKE_MODULE_PATH}  ${COMMON_CMAKE_DIR}/Modules
+    ${CMAKE_MODULE_PATH}  ${common_cmake_dir}/Modules
 )
 
 Find_Package (CppUnit)
