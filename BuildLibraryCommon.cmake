@@ -18,7 +18,7 @@
 ##    --  PACKAGE_INCLUDE_DIR
 ##    --  PROJECT_NAME
 ##  -   モジュール毎に設定する必要がある変数：
-##    --  INCLIB_HEADER_FILES
+##    --  inclib_header_files
 ##    --  library_source_files
 ##    --  module_dir_name
 ##    --  module_title
@@ -101,7 +101,7 @@ set_property(TARGET     ${PROJECT_NAME}-${MODULE_TARGET_NAME}
 
 ##  ヘッダファイルをインストールする。
 
-install(FILES           ${INCLIB_HEADER_FILES}
+install(FILES           ${inclib_header_files}
         DESTINATION     ${PACKAGE_INCLUDE_DIR}/${module_dir_name}
 )
 
