@@ -19,7 +19,7 @@
 ##    --  PROJECT_NAME
 ##  -   モジュール毎に設定する必要がある変数：
 ##    --  INCLIB_HEADER_FILES
-##    --  LIBRARY_SOURCE_FILES
+##    --  library_source_files
 ##    --  module_dir_name
 ##    --  module_title
 ##    --  module_output_name
@@ -36,10 +36,10 @@ set(MODULE_TARGET_NAME  "${LIBRARIES_TARGET_PREFIX}${module_title}")
 
 ##  ソースファイルの有無を確認する。
 
-If ( NOT ( "${LIBRARY_SOURCE_FILES}" STREQUAL "" ) )
+If ( NOT ( "${library_source_files}" STREQUAL "" ) )
     ##  通常通りライブラリファイルを生成する。
     add_library(${PROJECT_NAME}-${MODULE_TARGET_NAME}
-            ${LIBRARY_SOURCE_FILES})
+            ${library_source_files})
 
     ##  出力するファイル名。
     If ( "${module_output_name}" STREQUAL "" )
