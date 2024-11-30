@@ -35,6 +35,7 @@
 set(module_target_name      "${LIBRARIES_TARGET_PREFIX}${module_title}")
 
 set(project_module_target   "${PROJECT_NAME}-${module_target_name}")
+set(module_install_export   "${PROJECT_NAME}-${module_title}-Export")
 
 ##  ソースファイルの有無を確認する。
 
@@ -110,7 +111,7 @@ install(FILES           ${inclib_header_files}
 ##  ライブラリファイルをインストールする。
 
 install(TARGETS     ${project_module_target}
-        EXPORT      ${PROJECT_NAME}-${module_title}-Export
+        EXPORT      ${module_install_export}
         ARCHIVE     DESTINATION  ${libtop_dir_name}/${module_dir_name}
         LIBRARY     DESTINATION  ${libtop_dir_name}/${module_dir_name}
 )
@@ -122,8 +123,8 @@ install(TARGETS     ${project_module_target}
 
 ##  インストールツリー向けのエクスポート。
 
-install(EXPORT          ${PROJECT_NAME}-${module_title}-Export
-        FILE            ${PROJECT_NAME}-${module_title}-Export.cmake
+install(EXPORT          ${module_install_export}
+        FILE            ${module_install_export}.cmake
         DESTINATION     ${libtop_dir_name}/${module_dir_name}
         EXPORT_LINK_INTERFACE_LIBRARIES
 )
