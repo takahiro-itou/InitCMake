@@ -11,7 +11,7 @@
 ##    --  inctop_dir_name
 ##    --  inctop_source_dir
 ##    --  libraries_target_prefix
-##    --  LIBRARIES_NAME_PREFIX
+##    --  libraries_name_prefix
 ##    --  libtop_dir_name
 ##    --  OUTPUT_DEBUG_SUFFIX
 ##    --  OUTPUT_RELEASE_SUFFIX
@@ -48,26 +48,26 @@ If ( NOT ( "${library_source_files}" STREQUAL "" ) )
 
     ##  出力するファイル名。
     If ( "${module_output_name}" STREQUAL "" )
-        set(LIBRARY_OUTPUT_NAME
-                ${LIBRARIES_NAME_PREFIX}${module_target_name}
+        set(library_output_name
+                ${libraries_name_prefix}${module_target_name}
         )
     Else  ()
-        set(LIBRARY_OUTPUT_NAME
-                ${LIBRARIES_NAME_PREFIX}${module_output_name}
+        set(library_output_name
+                ${libraries_name_prefix}${module_output_name}
         )
     EndIf ()
 
     set_property(TARGET     ${project_module_target}
             PROPERTY        OUTPUT_NAME
-            ${LIBRARY_OUTPUT_NAME}
+            ${library_output_name}
     )
     set_property(TARGET     ${project_module_target}
             PROPERTY        OUTPUT_NAME_DEBUG
-            ${LIBRARY_OUTPUT_NAME}${OUTPUT_DEBUG_SUFFIX}
+            ${library_output_name}${OUTPUT_DEBUG_SUFFIX}
     )
     set_property(TARGET     ${project_module_target}
             PROPERTY        OUTPUT_NAME_RELEASE
-            ${LIBRARY_OUTPUT_NAME}${OUTPUT_RELEASE_SUFFIX}
+            ${library_output_name}${OUTPUT_RELEASE_SUFFIX}
     )
 
 Else  ()
