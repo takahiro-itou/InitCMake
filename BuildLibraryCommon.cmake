@@ -32,8 +32,6 @@
 
 ##  ターゲットの名前。
 
-set(module_target_name      "${libraries_target_prefix}${module_title}")
-
 set(project_module_target   "${project_target_prefix}${module_title}")
 set(module_export_prefix    "${project_export_prefix}${module_title}")
 set(module_install_export   "${module_export_prefix}-Export")
@@ -49,7 +47,7 @@ If ( NOT ( "${library_source_files}" STREQUAL "" ) )
     ##  出力するファイル名。
     If ( "${module_output_name}" STREQUAL "" )
         set(library_output_name
-                ${libraries_name_prefix}${module_target_name}
+                ${libraries_name_prefix}${module_title}
         )
     Else  ()
         set(library_output_name
