@@ -13,8 +13,8 @@
 ##    --  libraries_target_prefix
 ##    --  libraries_name_prefix
 ##    --  libtop_dir_name
-##    --  OUTPUT_DEBUG_SUFFIX
-##    --  OUTPUT_RELEASE_SUFFIX
+##    --  output_debug_suffix
+##    --  output_release_suffix
 ##    --  package_includedir
 ##    --  PROJECT_NAME
 ##  -   モジュール毎に設定する必要がある変数：
@@ -63,11 +63,11 @@ If ( NOT ( "${library_source_files}" STREQUAL "" ) )
     )
     set_property(TARGET     ${project_module_target}
             PROPERTY        OUTPUT_NAME_DEBUG
-            ${library_output_name}${OUTPUT_DEBUG_SUFFIX}
+            ${library_output_name}${output_debug_suffix}
     )
     set_property(TARGET     ${project_module_target}
             PROPERTY        OUTPUT_NAME_RELEASE
-            ${library_output_name}${OUTPUT_RELEASE_SUFFIX}
+            ${library_output_name}${output_release_suffix}
     )
 
 Else  ()
