@@ -10,7 +10,7 @@
 ##  -   プロジェクト全体で共通にする事が多い変数
 ##    --  inctop_dir_name
 ##    --  inctop_source_dir
-##    --  LIBRARIES_TARGET_PREFIX
+##    --  libraries_target_prefix
 ##    --  LIBRARIES_NAME_PREFIX
 ##    --  libtop_dir_name
 ##    --  OUTPUT_DEBUG_SUFFIX
@@ -32,7 +32,7 @@
 
 ##  ターゲットの名前。
 
-set(module_target_name      "${LIBRARIES_TARGET_PREFIX}${module_title}")
+set(module_target_name      "${libraries_target_prefix}${module_title}")
 
 set(project_module_target   "${project_target_prefix}${module_title}")
 set(module_export_prefix    "${project_export_prefix}${module_title}")
