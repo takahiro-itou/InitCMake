@@ -36,6 +36,7 @@ set(module_target_name      "${LIBRARIES_TARGET_PREFIX}${module_title}")
 
 set(project_module_target   "${PROJECT_NAME}-${module_target_name}")
 set(module_install_export   "${PROJECT_NAME}-${module_title}-Export")
+set(module_build_export     "${PROJECT_NAME}-${module_title}-BuildTree-Export")
 
 ##  ソースファイルの有無を確認する。
 
@@ -133,5 +134,5 @@ install(EXPORT          ${module_install_export}
 
 export(
     TARGETS     ${project_module_target}
-    FILE        ${PROJECT_NAME}-${module_title}-BuildTree-Export.cmake
+    FILE        ${module_build_export}.cmake
 )
