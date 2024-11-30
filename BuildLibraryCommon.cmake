@@ -15,7 +15,7 @@
 ##    --  libtop_dir_name
 ##    --  OUTPUT_DEBUG_SUFFIX
 ##    --  OUTPUT_RELEASE_SUFFIX
-##    --  PACKAGE_INCLUDE_DIR
+##    --  package_includedir
 ##    --  PROJECT_NAME
 ##  -   モジュール毎に設定する必要がある変数：
 ##    --  inclib_header_files
@@ -107,7 +107,7 @@ set_property(TARGET     ${project_module_target}
 ##  ヘッダファイルをインストールする。
 
 install(FILES           ${inclib_header_files}
-        DESTINATION     ${PACKAGE_INCLUDE_DIR}/${module_dir_name}
+        DESTINATION     ${package_includedir}/${module_dir_name}
 )
 
 ##  ライブラリファイルをインストールする。
