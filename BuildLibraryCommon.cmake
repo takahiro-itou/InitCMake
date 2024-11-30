@@ -35,8 +35,9 @@
 set(module_target_name      "${LIBRARIES_TARGET_PREFIX}${module_title}")
 
 set(project_module_target   "${PROJECT_NAME}-${module_target_name}")
-set(module_install_export   "${PROJECT_NAME}-${module_title}-Export")
-set(module_build_export     "${PROJECT_NAME}-${module_title}-BuildTree-Export")
+set(module_export_prefix    "${PROJECT_NAME}-${module_title}")
+set(module_install_export   "${module_export_prefix}-Export")
+set(module_build_export     "${module_export_prefix}-BuildTree-Export")
 
 ##  ソースファイルの有無を確認する。
 
