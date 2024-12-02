@@ -5,7 +5,7 @@ Include (FindPackageHandleStandardArgs)
 
 If ( NOT ( "${CPPUNIT_DIR}" STREQUAL "no" ) )
     find_path(
-        CPPUNIT_INCLUDE_DIR
+        cppunit_include_dir
         NAMES   cppunit/extensions/HelperMacros.h
         PATHS
             ${CPPUNIT_DIR}/include
@@ -14,22 +14,23 @@ If ( NOT ( "${CPPUNIT_DIR}" STREQUAL "no" ) )
     )
 
     find_library(
-        CPPUNIT_LIBRARY
+        cppunit_library
         NAMES   cppunit
         PATHS
             ${CPPUNIT_DIR}/lib
             /usr/lib
             /usr/local/lib
         )
+
     find_package_handle_standard_args(
         CPPUNIT     DEFAULT_MSG
-        CPPUNIT_LIBRARY
-        CPPUNIT_INCLUDE_DIR
+        cppunit_library
+        cppunit_include_dir
     )
 EndIf ()
 
-If ( CPPUNIT_INCLUDE_DIR )
-    If ( CPPUNIT_LIBRARY )
+If ( cppunit_include_dir )
+    If ( cppunit_library )
             message(STATUS  "CPPUNIT is enabled.")
     Else ()
         message(WARNING "Could not find cppunit library.")
@@ -39,8 +40,8 @@ Else ()
 EndIf ()
 
 message(STATUS  "CPPUNIT_FOUND       = ${CPPUNIT_FOUND}")
-message(STATUS  "CPPUNIT_INCLUDE_DIR = ${CPPUNIT_INCLUDE_DIR}")
-message(STATUS  "CPPUNIT_LIBRARY     = ${CPPUNIT_LIBRARY}")
+message(STATUS  "cppunit_include_dir = ${cppunit_include_dir}")
+message(STATUS  "cppunit_library     = ${cppunit_library}")
 
 If ( NOT TARGET CPPUNIT::CPPUNIT )
     If ( CPPUNIT_FOUND )
@@ -48,9 +49,9 @@ If ( NOT TARGET CPPUNIT::CPPUNIT )
         set_target_properties(CPPUNIT::CPPUNIT
             PROPERTIES
             IMPORTED_LINK_INTERFACE_LANGUAGES   "CXX"
-            IMPORTED_LOCATION                   "${CPPUNIT_LIBRARY}"
+            IMPORTED_LOCATION                   "${cppunit_library}"
             INTERFACE_COMPILE_DEFINITIONS       "HAVE_CPPUNIT=1"
-            INTERFACE_INCLUDE_DIRECTORIES       "${CPPUNIT_INCLUDE_DIR}"
+            INTERFACE_INCLUDE_DIRECTORIES       "${cppunit_include_dir}"
         )
         message(STATUS  "Define target CPPUNIT::CPPUNIT")
     Else ()
