@@ -1,5 +1,5 @@
 
-set(CPPUNIT_FOUND   FALSE)
+set(CppUnit_FOUND   FALSE)
 
 Include (FindPackageHandleStandardArgs)
 
@@ -23,7 +23,7 @@ If ( NOT ( "${CPPUNIT_DIR}" STREQUAL "no" ) )
         )
 
     find_package_handle_standard_args(
-        CPPUNIT     DEFAULT_MSG
+        CppUnit     DEFAULT_MSG
         cppunit_library
         cppunit_include_dir
     )
@@ -31,7 +31,7 @@ EndIf ()
 
 If ( cppunit_include_dir )
     If ( cppunit_library )
-            message(STATUS  "CPPUNIT is enabled.")
+            message(STATUS  "CppUnit is enabled.")
     Else ()
         message(WARNING "Could not find cppunit library.")
     EndIf ()
@@ -39,12 +39,12 @@ Else ()
     message(WARNING "Could not find cppunit includes.")
 EndIf ()
 
-message(STATUS  "CPPUNIT_FOUND       = ${CPPUNIT_FOUND}")
+message(STATUS  "CppUnit_FOUND       = ${CppUnit_FOUND}")
 message(STATUS  "cppunit_include_dir = ${cppunit_include_dir}")
 message(STATUS  "cppunit_library     = ${cppunit_library}")
 
 If ( NOT TARGET CPPUNIT::CPPUNIT )
-    If ( CPPUNIT_FOUND )
+    If ( CppUnit_FOUND )
         add_library(CPPUNIT::CPPUNIT    UNKNOWN     IMPORTED)
         set_target_properties(CPPUNIT::CPPUNIT
             PROPERTIES
