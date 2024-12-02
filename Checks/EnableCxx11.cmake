@@ -1,18 +1,18 @@
 
 Include (CheckCXXCompilerFlag)
 
-check_cxx_compiler_flag("-std=gnu++14"  COMPILER_ACCEPTS_GNUXX14)
+check_cxx_compiler_flag("-std=gnu++14"  compiler_accepts_gnuxx14)
 check_cxx_compiler_flag("-std=gnu++11"  COMPILER_ACCEPTS_GNUXX11)
-check_cxx_compiler_flag("-std=c++11"    COMPILER_ACCEPTS_CXX11)
+check_cxx_compiler_flag("-std=c++11"    compiler_accepts_cxx11)
 check_cxx_compiler_flag("-std=c++0x"    COMPILER_ACCEPTS_CXX0X)
 
-If ( COMPILER_ACCEPTS_GNUXX14 )
+If ( compiler_accepts_gnuxx14 )
     message(STATUS  "Compiler ${CMAKE_CXX_COMPILER} Accepts -std=gnu++14")
     set(CXXFLAGS_ENABLE_STDCXX  "-std=gnu++14")
 ElseIf ( COMPILER_ACCEPTS_GNUXX11 )
     message(STATUS  "Compiler ${CMAKE_CXX_COMPILER} Accepts -std=gnu++11")
     set(CXXFLAGS_ENABLE_STDCXX  "-std=gnu++11")
-ElseIf ( COMPILER_ACCEPTS_CXX11 )
+ElseIf ( compiler_accepts_cxx11 )
     message(STATUS  "Compiler ${CMAKE_CXX_COMPILER} Accepts -std=c++11")
     set(CXXFLAGS_ENABLE_STDCXX  "-std=c++11")
 ElseIf ( COMPILER_ACCEPTS_CXX0X )
