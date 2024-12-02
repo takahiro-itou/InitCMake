@@ -43,23 +43,23 @@ message(STATUS  "CppUnit_FOUND       = ${CppUnit_FOUND}")
 message(STATUS  "cppunit_include_dir = ${cppunit_include_dir}")
 message(STATUS  "cppunit_library     = ${cppunit_library}")
 
-If ( NOT TARGET CPPUNIT::CPPUNIT )
+If ( NOT TARGET TestDriver::CppUnit )
     If ( CppUnit_FOUND )
-        add_library(CPPUNIT::CPPUNIT    UNKNOWN     IMPORTED)
-        set_target_properties(CPPUNIT::CPPUNIT
+        add_library(TestDriver::CppUnit     UNKNOWN     IMPORTED)
+        set_target_properties(TestDriver::CppUnit
             PROPERTIES
             IMPORTED_LINK_INTERFACE_LANGUAGES   "CXX"
             IMPORTED_LOCATION                   "${cppunit_library}"
             INTERFACE_COMPILE_DEFINITIONS       "HAVE_CPPUNIT=1"
             INTERFACE_INCLUDE_DIRECTORIES       "${cppunit_include_dir}"
         )
-        message(STATUS  "Define target CPPUNIT::CPPUNIT")
+        message(STATUS  "Define target TestDriver::CppUnit")
     Else ()
-        add_library(CPPUNIT::CPPUNIT    INTERFACE   IMPORTED)
-        set_target_properties(CPPUNIT::CPPUNIT
+        add_library(TestDriver::CppUnit     INTERFACE   IMPORTED)
+        set_target_properties(TestDriver::CppUnit
             PROPERTIES
             INTERFACE_COMPILE_DEFINITIONS       "HAVE_CPPUNIT=0"
         )
-        message(STATUS  "Define target CPPUNIT::CPPUNIT")
+        message(STATUS  "Define target TestDriver::CppUnit")
     EndIf ()
 EndIf ()
