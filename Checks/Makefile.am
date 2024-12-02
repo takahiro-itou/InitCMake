@@ -10,7 +10,9 @@
 dist_noinst_DATA    =  \
     ConstExpr.cmake             \
     DefaultDeclarations.cmake   \
+    EnableCxx11.cmake           \
     NullPtr.cmake               \
     Override.cmake              \
     RightValueReference.cmake   \
-    StaticAssert.cmake
+    StaticAssert.cmake          \
+    ${extra_noinst_data_files}
