@@ -28,19 +28,19 @@ set(common_cmake_dir        "${PROJECT_SOURCE_DIR}/[path_for_cmake]")
 ##    ビルド環境の検査。
 ##
 
-Include (${common_cmake_dir}/EnableCxx11.cmake)
+Include (${common_cmake_dir}/Checks/EnableCxx11.cmake)
 
-Include (${common_cmake_dir}/CheckConstExpr.cmake)
-Include (${common_cmake_dir}/CheckNullPtr.cmake)
-Include (${common_cmake_dir}/CheckOverride.cmake)
+Include (${common_cmake_dir}/Checks/ConstExpr.cmake)
+Include (${common_cmake_dir}/Checks/NullPtr.cmake)
+Include (${common_cmake_dir}/Checks/Override.cmake)
 ```
 
-|      ファイル名      |          設定されるフラグ          |  検査対象  |
-|:---------------------|:-----------------------------------|:-----------|
-| EnableCxx11.cmake    | CXXFLAGS_ENABLE_STDCXX, CXXFLAGS   | 下記参照   |
-| CheckConstExpr.cmake | CONFIG_CHECK_CXX_CONSTEXPR_ENABLED | constexpr  |
-| CheckNullPtr.cmake   | CONFIG_CHECK_CXX_NULLPTR_ENABLED   | nullptr    |
-| CheckOverride.cmake  | CONFIG_CHECK_CXX_OVERRIDE_ENABLED  | override   |
+|        ファイル名        |          設定されるフラグ          |  検査対象  |
+|:-------------------------|:-----------------------------------|:-----------|
+| EnableCxx11.cmake        | CXXFLAGS_ENABLE_STDCXX, CXXFLAGS   | 下記参照   |
+| ConstExpr.cmake          | CONFIG_CHECK_CXX_CONSTEXPR_ENABLED | constexpr  |
+| NullPtr.cmake            | CONFIG_CHECK_CXX_NULLPTR_ENABLED   | nullptr    |
+| Override.cmake           | CONFIG_CHECK_CXX_OVERRIDE_ENABLED  | override   |
 
 - EnableCxx11.cmake の判定結果
 
