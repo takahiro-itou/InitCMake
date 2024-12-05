@@ -37,7 +37,7 @@ Include (${common_cmake_dir}/Checks/Override.cmake)
 
 |        ファイル名        |          設定されるフラグ          |  検査対象  |
 |:-------------------------|:-----------------------------------|:-----------|
-| EnableCxx11.cmake        | CXXFLAGS_ENABLE_STDCXX, CXXFLAGS   | 下記参照   |
+| EnableCxx11.cmake        | cxxflags_enable_stdcxx, CXXFLAGS   | 下記参照   |
 | ConstExpr.cmake          | CONFIG_CHECK_CXX_CONSTEXPR_ENABLED | constexpr  |
 | NullPtr.cmake            | CONFIG_CHECK_CXX_NULLPTR_ENABLED   | nullptr    |
 | Override.cmake           | CONFIG_CHECK_CXX_OVERRIDE_ENABLED  | override   |
@@ -52,7 +52,7 @@ Include (${common_cmake_dir}/Checks/Override.cmake)
 |       4  | compiler_accepts_cxx0x   | --std=c++0x  |
 
 これを上から順に検査して、最初に受け入れられたオプションが
-変数 CXXFLAGS_ENABLE_STDCXX に設定され、
+変数 cxxflags_enable_stdcxx に設定され、
 さらに変数 CMAKE_CXX_FLAGS  の末尾に追記される。
 
 ###   外部パッケージの追加
