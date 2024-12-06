@@ -4,7 +4,7 @@
 ##    ディレクトリ名。
 ##
 
-set(incpkg_dir_name         "${PROJECT_NAME}")
+set(incpkg_dir_name         "${project_name}")
 set(package_includedir      "${inctop_dir_name}/${incpkg_dir_name}")
 
 set(inctop_source_dir       "${PROJECT_SOURCE_DIR}/${inctop_dir_name}")

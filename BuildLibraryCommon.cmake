@@ -16,7 +16,7 @@
 ##    --  output_debug_suffix
 ##    --  output_release_suffix
 ##    --  package_includedir
-##    --  PROJECT_NAME
+##    --  project_name
 ##  -   モジュール毎に設定する必要がある変数：
 ##    --  inclib_header_files
 ##    --  library_source_files
