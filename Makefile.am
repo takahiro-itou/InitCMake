@@ -3,7 +3,7 @@
 ##    List of Directories.
 ##
 
-SUBDIRS         =  Modules
+SUBDIRS         =  .  Checks  Packages
 DIST_SUBDIRS    =  $(SUBDIRS)
 
 ##
