@@ -11,7 +11,7 @@ DIST_SUBDIRS    =  $(SUBDIRS)
 ##
 
 dist_noinst_DATA    =  \
-    ConfigDirectory.cmake           \
-    DefaultCompileOptions.cmake     \
-    TargetSystem.cmake              \
+    ConfigDirectory.cmake       \
+    DefaultBuildOptions.cmake   \
+    TargetSystem.cmake          \
     ${extra_noinst_data_files}
