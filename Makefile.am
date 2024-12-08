@@ -3,7 +3,7 @@
 ##    List of Directories.
 ##
 
-SUBDIRS         =  .  Checks  Packages
+SUBDIRS         =  .  BuildCommon  Checks  Packages
 DIST_SUBDIRS    =  $(SUBDIRS)
 
 ##
