@@ -18,7 +18,7 @@ EndIf()
 ##    プロジェクト内のターゲットの参照
 ##
 
-Include (${common_cmake_dir}/ConfigTarget.cmake)
+# Include (${common_cmake_dir}/BuildCommon/ConfigTarget.cmake)
 
 
 ##----------------------------------------------------------------
