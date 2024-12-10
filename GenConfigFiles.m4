@@ -1,3 +1,5 @@
+dnl -*-  coding: utf-8; mode: autoconf -*-
+
 dnl ----------------------------------------------------------------
 dnl
 dnl   Outputs.
