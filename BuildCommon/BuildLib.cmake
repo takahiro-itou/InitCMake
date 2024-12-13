@@ -78,10 +78,10 @@ EndIf ()
 ##    ターゲットが必要とするライブラリがあれば設定する。
 ##
 
-If ( NOT ( "${MODULE_NEEDS_LIBRARIES}" STREQUAL "" ) )
+If ( NOT ( "${module_needs_libraries}" STREQUAL "" ) )
     target_link_libraries(
             ${project_module_target}
-            ${MODULE_NEEDS_LIBRARIES}
+            ${module_needs_libraries}
     )
 EndIf ()
 
