@@ -10,13 +10,13 @@
 ##  -   プロジェクト全体で共通にする事が多い変数
 ##    --  inctop_dir_name
 ##    --  inctop_source_dir
-##    --  LIBRARIES_TARGET_PREFIX
-##    --  LIBRARIES_NAME_PREFIX
+##    --  libraries_target_prefix
+##    --  libraries_name_prefix
 ##    --  libtop_dir_name
-##    --  OUTPUT_DEBUG_SUFFIX
-##    --  OUTPUT_RELEASE_SUFFIX
-##    --  PACKAGE_INCLUDE_DIR
-##    --  PROJECT_NAME
+##    --  output_debug_suffix
+##    --  output_release_suffix
+##    --  package_includedir
+##    --  project_name
 ##  -   モジュール毎に設定する必要がある変数：
 ##    --  inclib_header_files
 ##    --  library_source_files
@@ -32,42 +32,45 @@
 
 ##  ターゲットの名前。
 
-set(MODULE_TARGET_NAME  "${LIBRARIES_TARGET_PREFIX}${module_title}")
+set(project_module_target   "${project_target_prefix}${module_title}")
+set(module_export_prefix    "${project_export_prefix}${module_title}")
+set(module_install_export   "${module_export_prefix}-Export")
+set(module_build_export     "${module_export_prefix}-BuildTree-Export")
 
 ##  ソースファイルの有無を確認する。
 
 If ( NOT ( "${library_source_files}" STREQUAL "" ) )
     ##  通常通りライブラリファイルを生成する。
-    add_library(${PROJECT_NAME}-${MODULE_TARGET_NAME}
+    add_library(${project_module_target}
             ${library_source_files})
 
     ##  出力するファイル名。
     If ( "${module_output_name}" STREQUAL "" )
-        set(LIBRARY_OUTPUT_NAME
-                ${LIBRARIES_NAME_PREFIX}${MODULE_TARGET_NAME}
+        set(library_output_name
+                ${libraries_name_prefix}${module_title}
         )
     Else  ()
-        set(LIBRARY_OUTPUT_NAME
-                ${LIBRARIES_NAME_PREFIX}${module_output_name}
+        set(library_output_name
+                ${libraries_name_prefix}${module_output_name}
         )
     EndIf ()
 
-    set_property(TARGET     ${PROJECT_NAME}-${MODULE_TARGET_NAME}
+    set_property(TARGET     ${project_module_target}
             PROPERTY        OUTPUT_NAME
-            ${LIBRARY_OUTPUT_NAME}
+            ${library_output_name}
     )
-    set_property(TARGET     ${PROJECT_NAME}-${MODULE_TARGET_NAME}
+    set_property(TARGET     ${project_module_target}
             PROPERTY        OUTPUT_NAME_DEBUG
-            ${LIBRARY_OUTPUT_NAME}${OUTPUT_DEBUG_SUFFIX}
+            ${library_output_name}${output_debug_suffix}
     )
-    set_property(TARGET     ${PROJECT_NAME}-${MODULE_TARGET_NAME}
+    set_property(TARGET     ${project_module_target}
             PROPERTY        OUTPUT_NAME_RELEASE
-            ${LIBRARY_OUTPUT_NAME}${OUTPUT_RELEASE_SUFFIX}
+            ${library_output_name}${output_release_suffix}
     )
 
 Else  ()
     ##  ヘッダのみのインターフェイスライブラリ。
-    add_library(${PROJECT_NAME}-${MODULE_TARGET_NAME}   INTERFACE)
+    add_library(${project_module_target}    INTERFACE)
 EndIf ()
 
 ##----------------------------------------------------------------
@@ -75,10 +78,10 @@ EndIf ()
 ##    ターゲットが必要とするライブラリがあれば設定する。
 ##
 
-If ( NOT ( "${MODULE_NEEDS_LIBRARIES}" STREQUAL "" ) )
+If ( NOT ( "${module_needs_libraries}" STREQUAL "" ) )
     target_link_libraries(
-            ${PROJECT_NAME}-${MODULE_TARGET_NAME}
-            ${MODULE_NEEDS_LIBRARIES}
+            ${project_module_target}
+            ${module_needs_libraries}
     )
 EndIf ()
 
@@ -87,7 +90,7 @@ EndIf ()
 ##    インクルードディレクトリを設定する。
 ##
 
-set_property(TARGET     ${PROJECT_NAME}-${MODULE_TARGET_NAME}
+set_property(TARGET     ${project_module_target}
         APPEND  PROPERTY   INTERFACE_INCLUDE_DIRECTORIES
         $<BUILD_INTERFACE:${inctop_source_dir}>
         $<INSTALL_INTERFACE:${inctop_dir_name}>
@@ -102,13 +105,13 @@ set_property(TARGET     ${PROJECT_NAME}-${MODULE_TARGET_NAME}
 ##  ヘッダファイルをインストールする。
 
 install(FILES           ${inclib_header_files}
-        DESTINATION     ${PACKAGE_INCLUDE_DIR}/${module_dir_name}
+        DESTINATION     ${package_includedir}/${module_dir_name}
 )
 
 ##  ライブラリファイルをインストールする。
 
-install(TARGETS     ${PROJECT_NAME}-${MODULE_TARGET_NAME}
-        EXPORT      ${PROJECT_NAME}-${module_title}-Export
+install(TARGETS     ${project_module_target}
+        EXPORT      ${module_install_export}
         ARCHIVE     DESTINATION  ${libtop_dir_name}/${module_dir_name}
         LIBRARY     DESTINATION  ${libtop_dir_name}/${module_dir_name}
 )
@@ -120,8 +123,8 @@ install(TARGETS     ${PROJECT_NAME}-${MODULE_TARGET_NAME}
 
 ##  インストールツリー向けのエクスポート。
 
-install(EXPORT          ${PROJECT_NAME}-${module_title}-Export
-        FILE            ${PROJECT_NAME}-${module_title}-Export.cmake
+install(EXPORT          ${module_install_export}
+        FILE            ${module_install_export}.cmake
         DESTINATION     ${libtop_dir_name}/${module_dir_name}
         EXPORT_LINK_INTERFACE_LIBRARIES
 )
@@ -129,6 +132,6 @@ install(EXPORT          ${PROJECT_NAME}-${module_title}-Export
 ##  ビルドツリー向けのエクスポート。
 
 export(
-    TARGETS     ${PROJECT_NAME}-${MODULE_TARGET_NAME}
-    FILE        ${PROJECT_NAME}-${module_title}-BuildTree-Export.cmake
+    TARGETS     ${project_module_target}
+    FILE        ${module_build_export}.cmake
 )

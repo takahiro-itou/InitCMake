@@ -8,5 +8,5 @@
 ##
 
 dist_noinst_DATA    =  \
-    FindCppUnit.cmake
-
+    FindCppUnit.cmake           \
+    ${extra_noinst_data_files}

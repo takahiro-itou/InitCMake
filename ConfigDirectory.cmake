@@ -4,8 +4,8 @@
 ##    ディレクトリ名。
 ##
 
-set(incpkg_dir_name         "${PROJECT_NAME}")
-set(PACKAGE_INCLUDE_DIR     "${inctop_dir_name}/${incpkg_dir_name}")
+set(incpkg_dir_name         "${project_name}")
+set(package_includedir      "${inctop_dir_name}/${incpkg_dir_name}")
 
 set(inctop_source_dir       "${PROJECT_SOURCE_DIR}/${inctop_dir_name}")
 set(inctop_binary_dir       "${PROJECT_BINARY_DIR}/${inctop_dir_name}")

@@ -12,6 +12,15 @@ If ( NOT DEFINED  module_output_name )
     set(module_output_name  ${module_title})
 EndIf()
 
+
+##----------------------------------------------------------------
+##
+##    プロジェクト内のターゲットの参照
+##
+
+# Include (${common_cmake_dir}/BuildCommon/ConfigTarget.cmake)
+
+
 ##----------------------------------------------------------------
 ##
 ##    インクルードディレクトリのパスを設定。
