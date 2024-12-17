@@ -3,7 +3,7 @@
 ##    List of Directories.
 ##
 
-SUBDIRS         =  Modules
+SUBDIRS         =  .  BuildCommon  Checks  Packages
 DIST_SUBDIRS    =  $(SUBDIRS)
 
 ##
@@ -11,9 +11,7 @@ DIST_SUBDIRS    =  $(SUBDIRS)
 ##
 
 dist_noinst_DATA    =  \
-    BuildLibraryCommon.cmake    \
-    CheckConstExpr.cmake        \
-    CheckNullPtr.cmake          \
-    CheckOverride.cmake         \
-    EnableCxx11.cmake
-
+    ConfigDirectory.cmake       \
+    DefaultBuildOptions.cmake   \
+    TargetSystem.cmake          \
+    ${extra_noinst_data_files}

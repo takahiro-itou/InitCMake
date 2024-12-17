@@ -1,0 +1,27 @@
+
+Include (CheckCXXCompilerFlag)
+
+check_cxx_compiler_flag("-std=gnu++14"  compiler_accepts_gnuxx14)
+check_cxx_compiler_flag("-std=gnu++11"  compiler_accepts_gnuxx11)
+check_cxx_compiler_flag("-std=c++11"    compiler_accepts_cxx11)
+check_cxx_compiler_flag("-std=c++0x"    compiler_accepts_cxx0x)
+
+If ( compiler_accepts_gnuxx14 )
+    message(STATUS  "Compiler ${CMAKE_CXX_COMPILER} Accepts -std=gnu++14")
+    set(cxxflags_enable_stdcxx  "-std=gnu++14")
+ElseIf ( compiler_accepts_gnuxx11 )
+    message(STATUS  "Compiler ${CMAKE_CXX_COMPILER} Accepts -std=gnu++11")
+    set(cxxflags_enable_stdcxx  "-std=gnu++11")
+ElseIf ( compiler_accepts_cxx11 )
+    message(STATUS  "Compiler ${CMAKE_CXX_COMPILER} Accepts -std=c++11")
+    set(cxxflags_enable_stdcxx  "-std=c++11")
+ElseIf ( compiler_accepts_cxx0x )
+    message(STATUS  "Compiler ${CMAKE_CXX_COMPILER} Accepts -std=c++0x")
+    set(cxxflags_enable_stdcxx  "-std=c++0x")
+Else  ()
+    message(STATUS  "Compiler ${CMAKE_CXX_COMPILER} : No Support c++11")
+    set(cxxflags_enable_stdcxx  "")
+EndIf ()
+
+set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS}  ${cxxflags_enable_stdcxx}")
+message(STATUS  "CMAKE_CXX_FLAGS = ${CMAKE_CXX_FLAGS}")
