@@ -21,5 +21,5 @@ set(incpkg_binary_dir       "${inctop_binary_dir}/${incpkg_dir_name}")
 ##    インクルードパスの設定。
 ##
 
-include_directories("${inctop_source_dir}")
-include_directories("${inctop_binary_dir}")
+# include_directories("${inctop_source_dir}")
+# include_directories("${inctop_binary_dir}")
