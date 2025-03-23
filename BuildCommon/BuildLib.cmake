@@ -90,11 +90,30 @@ EndIf ()
 ##    インクルードディレクトリを設定する。
 ##
 
-set_property(TARGET     ${project_module_target}
-        APPEND  PROPERTY   INTERFACE_INCLUDE_DIRECTORIES
+If ( NOT ( "${library_source_files}" STREQUAL "" ) )
+    target_include_directories(
+        ${project_module_target}  PUBLIC
         $<BUILD_INTERFACE:${inctop_source_dir}>
         $<INSTALL_INTERFACE:${inctop_dir_name}>
-)
+    )
+
+    target_include_directories(
+        ${project_module_target}  PUBLIC
+        $<BUILD_INTERFACE:${inctop_binary_dir}>
+    )
+Else ()
+    target_include_directories(
+        ${project_module_target}  INTERFACE
+        $<BUILD_INTERFACE:${inctop_source_dir}>
+        $<INSTALL_INTERFACE:${inctop_dir_name}>
+    )
+
+    target_include_directories(
+        ${project_module_target}  INTERFACE
+        $<BUILD_INTERFACE:${inctop_binary_dir}>
+    )
+EndIf ()
+
 
 ##----------------------------------------------------------------
 ##
