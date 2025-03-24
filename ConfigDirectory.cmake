@@ -21,5 +21,6 @@ set(incpkg_binary_dir       "${inctop_binary_dir}/${incpkg_dir_name}")
 ##    インクルードパスの設定。
 ##
 
-# include_directories("${inctop_source_dir}")
-# include_directories("${inctop_binary_dir}")
+##  各ターゲットに対し target_include_directories で
+##  設定するように修正したので、
+##  ここでは特に設定する項目は無い。
