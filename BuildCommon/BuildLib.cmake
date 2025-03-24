@@ -37,6 +37,13 @@ set(module_export_prefix    "${project_export_prefix}${module_title}")
 set(module_install_export   "${module_export_prefix}-Export")
 set(module_build_export     "${module_export_prefix}-BuildTree-Export")
 
+message("Config Target for ${module_title}")
+message("  project_module_target = ${project_module_target}")
+message("  module_export_prefix  = ${module_export_prefix}")
+message("  module_install_export = ${module_install_export}")
+message("  module_build_export   = ${module_build_export}")
+
+
 ##  ソースファイルの有無を確認する。
 
 If ( NOT ( "${library_source_files}" STREQUAL "" ) )
@@ -84,6 +91,7 @@ If ( NOT ( "${module_needs_libraries}" STREQUAL "" ) )
             ${module_needs_libraries}
     )
 EndIf ()
+
 
 ##----------------------------------------------------------------
 ##
