@@ -30,13 +30,6 @@
 ##    ターゲットの設定
 ##
 
-##  ターゲットの名前。
-
-set(project_module_target   "${project_target_prefix}${module_title}")
-set(module_export_prefix    "${project_export_prefix}${module_title}")
-set(module_install_export   "${module_export_prefix}-Export")
-set(module_build_export     "${module_export_prefix}-BuildTree-Export")
-
 ##  ソースファイルの有無を確認する。
 
 If ( NOT ( "${library_source_files}" STREQUAL "" ) )
@@ -85,16 +78,36 @@ If ( NOT ( "${module_needs_libraries}" STREQUAL "" ) )
     )
 EndIf ()
 
+
 ##----------------------------------------------------------------
 ##
 ##    インクルードディレクトリを設定する。
 ##
 
-set_property(TARGET     ${project_module_target}
-        APPEND  PROPERTY   INTERFACE_INCLUDE_DIRECTORIES
-        $<BUILD_INTERFACE:${inctop_source_dir}>
-        $<INSTALL_INTERFACE:${inctop_dir_name}>
-)
+If ( NOT ( "${library_source_files}" STREQUAL "" ) )
+    target_include_directories(
+            ${project_module_target}  PUBLIC
+            $<BUILD_INTERFACE:${inctop_source_dir}>
+            $<INSTALL_INTERFACE:${inctop_dir_name}>
+    )
+
+    target_include_directories(
+            ${project_module_target}  PUBLIC
+            $<BUILD_INTERFACE:${inctop_binary_dir}>
+    )
+Else ()
+    target_include_directories(
+            ${project_module_target}  INTERFACE
+            $<BUILD_INTERFACE:${inctop_source_dir}>
+            $<INSTALL_INTERFACE:${inctop_dir_name}>
+    )
+
+    target_include_directories(
+            ${project_module_target}  INTERFACE
+            $<BUILD_INTERFACE:${inctop_binary_dir}>
+    )
+EndIf ()
+
 
 ##----------------------------------------------------------------
 ##
